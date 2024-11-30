@@ -1,0 +1,32 @@
+<div class="container">
+  <!-- Sidebar Section -->
+  <div class="sidebar">
+    <h2>MyShop</h2>
+    <ul>
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/products">Products</a></li>
+      <li><a routerLink="/cart">Cart</a></li>
+      <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/register">Register</a></li>
+    </ul>
+  </div>
+
+  <!-- Product List Section -->
+  <div class="product-list">
+    <h2>Our Products</h2>
+    <div class="product-cards">
+      <div *ngFor="let product of products" class="product-card">
+        <img [src]="product.image" alt="{{ product.name }}" class="product-image" />
+        <div class="product-info">
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.description }}</p>
+          <p>Price: ${{ product.price }}</p>
+        </div>
+        <div class="product-actions">
+          <button (click)="addToCart(product)" class="btn btn-primary">Add to Cart</button>
+          <a [routerLink]="['/products', product.id]" class="btn btn-link">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
